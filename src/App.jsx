@@ -200,7 +200,7 @@ function App() {
               </ul>
             </div>
 
-            <div className="feature-card animate-on-scroll delay-1" style={{ gridColumn: 'span 2' }}>
+            <div className="feature-card animate-on-scroll delay-1 service-card-wide">
                <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
                   <div style={{ flex: '1 1 300px' }}>
                     <FiBarChart size={32} className="icon-color" style={{ marginBottom: '1.5rem', color: 'var(--color-yellow)' }} />
@@ -208,7 +208,7 @@ function App() {
                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>End-to-end tactical planning for launches, airdrops, and major milestones.</p>
                   </div>
                   <div style={{ flex: '1 1 300px' }}>
-                    <ul style={{ listStyleType: 'none', padding: 0, fontSize: '0.9rem', color: 'var(--text-secondary)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                    <ul className="service-list-grid">
                       <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><FiArrowRight color="var(--color-yellow)" /> Airdrop campaign logic</li>
                       <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><FiArrowRight color="var(--color-yellow)" /> Influencer briefing</li>
                       <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><FiArrowRight color="var(--color-yellow)" /> Launch phase moderation</li>

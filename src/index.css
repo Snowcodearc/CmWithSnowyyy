@@ -458,8 +458,31 @@ section:nth-child(3) { animation-delay: 0.5s; }
   gap: 1.5rem;
 }
 
-@media (max-width: 768px) {
+.service-card-wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 991px) {
   .service-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-card-wide {
+    grid-column: span 1;
+  }
+}
+
+.service-list-grid {
+  list-style-type: none;
+  padding: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 576px) {
+  .service-list-grid {
     grid-template-columns: 1fr;
   }
 }
