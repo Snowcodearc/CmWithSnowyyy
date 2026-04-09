@@ -110,6 +110,12 @@ button {
   height: calc(100vh - 4rem);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   overflow-y: auto;
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .profile-card h1, 
@@ -231,8 +237,8 @@ button {
 section {
   margin-bottom: 8rem;
   animation: fadeIn 1s ease-out forwards;
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 section:nth-child(1) { animation-delay: 0.1s; }
@@ -252,10 +258,16 @@ section:nth-child(3) { animation-delay: 0.5s; }
   text-transform: uppercase;
   letter-spacing: -0.03em;
   line-height: 1;
-  background: linear-gradient(90deg, var(--text-main), var(--color-yellow));
+  background: linear-gradient(90deg, var(--text-main), var(--color-yellow), var(--text-main));
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
 }
 
 .section-title span {
@@ -440,6 +452,18 @@ section:nth-child(3) { animation-delay: 0.5s; }
   transform: rotate(-45deg);
 }
 
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Skills Grid */
 .skills-grid {
   display: grid;
@@ -536,7 +560,8 @@ textarea.form-control {
 }
 
 .btn-submit {
-  background: linear-gradient(90deg, var(--color-orange-dark), var(--color-red));
+  background: linear-gradient(90deg, var(--color-orange-dark), var(--color-red), var(--color-orange-dark));
+  background-size: 200% auto;
   color: #FFFFFF;
   font-family: var(--font-heading);
   font-size: 1.1rem;
@@ -545,12 +570,17 @@ textarea.form-control {
   border-radius: var(--radius-md);
   width: 100%;
   transition: all var(--transition-normal);
+  animation: pulseButton 3s ease-in-out infinite, shine 4s linear infinite;
+}
+
+@keyframes pulseButton {
+  0%, 100% { box-shadow: 0 10px 20px rgba(242, 48, 48, 0.2); }
+  50% { box-shadow: 0 15px 30px rgba(242, 48, 48, 0.5); }
 }
 
 .btn-submit:hover {
   filter: brightness(1.15);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(242, 48, 48, 0.3);
+  transform: translateY(-3px) scale(1.02);
 }
 
 /* Footer */
@@ -619,6 +649,130 @@ footer {
   }
 }
 
+/* Testimonials & Vouches */
+.vouch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card:hover {
+  border-color: var(--color-yellow);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.testimonial-card::before {
+  content: '"';
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  color: rgba(255, 255, 255, 0.03);
+  position: absolute;
+  top: -2rem;
+  left: 1.5rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testimonial-content {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  line-height: 1.6;
+  font-style: italic;
+  flex: 1;
+  z-index: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+  z-index: 1;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-yellow), var(--color-orange-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #000;
+  font-size: 1.2rem;
+}
+
+.testimonial-meta h4 {
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+}
+
+.testimonial-meta p {
+  font-size: 0.85rem;
+  color: var(--color-yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.vouch-image-container {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.vouch-image-container:hover {
+  border-color: var(--color-yellow);
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.vouch-image-container img.vouch-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform var(--transition-normal);
+}
+
+.vouch-image-container:hover img.vouch-img {
+  transform: scale(1.03);
+}
+
+.vouch-placeholder {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 /* =========================================================================
    ANIMATIONS & EFFECTS
    ========================================================================= */
@@ -637,20 +791,23 @@ footer {
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: opacity, transform;
+  filter: blur(10px);
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1), filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform, filter;
 }
 
 .animate-scale {
   opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: opacity, transform;
+  transform: scale(0.9);
+  filter: blur(5px);
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1), filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform, filter;
 }
 
 .animate-on-scroll.visible, .animate-scale.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 
 .delay-1 { transition-delay: 0.1s; }
