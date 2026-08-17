@@ -81,7 +81,7 @@ function App() {
           </p>
 
           <div className="social-links">
-            <a href="https://x.com/snow_web" target="_blank" rel="noreferrer" className="social-link" aria-label="X (Twitter)">
+            <a href="https://x.com/yukeofx" target="_blank" rel="noreferrer" className="social-link" aria-label="X (Twitter)">
               <FaTwitter size={20} />
             </a>
             <a href="https://t.me/YukiBladen" target="_blank" rel="noreferrer" className="social-link" aria-label="Telegram">
